@@ -7,7 +7,7 @@ void main() {
         'Olá, Mundo!',
         textDirection: TextDirection.ltr,
         style: TextStyle(
-          color: Colors.green,
+          color: Colors.red,
           fontSize: 30,
           fontWeight: FontWeight.bold,
         ),
