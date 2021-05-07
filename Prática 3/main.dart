@@ -1,17 +1,42 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    Center(
-      child: Text(
-        'Olá, Mundo!',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          color: Colors.red,
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-  );
+  String nome = "Ana";
+
+
+   runApp(
+       Center(
+         child: RichText(
+            textDirection: TextDirection.ltr,
+       text:TextSpan(
+         text: "Olá," ,
+         style: TextStyle(
+           color: Colors.green,
+           fontSize: 30,
+           fontWeight: FontWeight.bold,
+           backgroundColor: Colors.white,
+         ), //TextSyle.
+         children: <TextSpan>[
+             TextSpan (
+             text: '$nome',
+             style: TextStyle(
+             color: Colors.blue,
+             decoration: TextDecoration.underline,
+             decorationColor: Colors.red,
+             decorationStyle: TextDecorationStyle.double,
+             ),
+             ),
+             TextSpan(
+                
+               text: '!\nQuinta-Feira'
+             ),
+             TextSpan(
+               text: '!\nBom Dia!' ,
+             ),
+         ],
+       ),
+         ),
+       ),
+   );
 }
+    
