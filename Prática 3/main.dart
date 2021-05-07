@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   String nome = "Ana";
-
-
    runApp(
        Center(
          child: RichText(
@@ -38,5 +36,4 @@ void main() {
          ),
        ),
    );
-}
-    
+} 
