@@ -3,37 +3,30 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     Column(
-        textDirection: TextDirection.ltr,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Neste exemplo, crossAxisAligmnment é definido',
-            textDirection: TextDirection.ltr,
+      children: [
+        Text(
+          'Olá, Mundo!!!',
+          textDirection: TextDirection.ltr,
+        ),
+        Text(
+          'Este aplicativo usa o widget column',
+          textDirection: TextDirection.ltr,
+        ),
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: const FlutterLogo(),
           ),
-          Text(
-            'como CorssAxixAlignment.start, para que os ',
-            textDirection: TextDirection.ltr,
+        ),
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Image.network(
+                'https://i.picsum.photos/id/9/250/250.jpg?hmac=tqDH5wEWHDN76mBIWEPzg1in6egMl49qZeguSaH9_VI'),
           ),
-          Text(
-            'filhos sejam alinhados à esquerda. O mainAxisSize ',
-            textDirection: TextDirection.ltr,
-          ),
-          Text(
-            'è definido como MainAxisSize.min, para que a coluna ',
-            textDirection: TextDirection.ltr,
-          ),
-          Text(
-            'Google Flutter.',
-            textDirection: TextDirection.ltr,
-            style: TextStyle(
-              color: Colors.blue,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              backgroundColor: Colors.white,
-            ),
-          ),
-        ]),
+        ),
+      ],
+    ),
   );
 }
 
