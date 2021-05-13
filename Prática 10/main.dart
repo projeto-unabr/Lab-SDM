@@ -47,11 +47,11 @@ class _HomeState extends State<Home> {
       else if (imc < 30.0)
         _result += "Levemente acima do peso";
       else if (imc < 35.0)
-        _result += "Obesidade Grau I";
+        _result += "Obesidade de 1º Grau ";
       else if (imc < 40.0)
-        _result += "Obesidade Grau II";
+        _result += "Obesidade 2º Grau ";
       else
-        _result += "Obesidade Grau IIII";
+        _result += "Obesidade 3º Grau ";
     });
   }
 
@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text('Calculadora de IMC'),
+      title: Text('Calculadora de IMC '),
       backgroundColor: Colors.blue,
       actions: <Widget>[
         IconButton(
@@ -87,11 +87,11 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           buildTextFormField(
               label: "Peso (kg)",
-              error: "Insira seu peso!",
+              error: "Informe o seu peso!",
               controller: _weightController),
           buildTextFormField(
               label: "Altura (cm)",
-              error: "Insira uma altura!",
+              error: "Informe a sua altura!",
               controller: _heightController),
           buildTextResult(),
           buildCalculateButton(),
