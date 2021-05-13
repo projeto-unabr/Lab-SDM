@@ -78,7 +78,7 @@ class HomeState extends State<Home> {
               print(somar());
               setState(somar);
             },
-            child: Text(
+            child: Text( 
               'Calcular',
               style: TextStyle(
                 fontSize: 20,
