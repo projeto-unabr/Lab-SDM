@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     _weightController.text = '';
     _heightController.text = '';
     setState(() {
-      _result = 'Informe seus dados';
+      _result = 'Informe os seus dados';
     });
   }
 
@@ -40,18 +40,22 @@ class _HomeState extends State<Home> {
 
     setState(() {
       _result = "IMC = ${imc.toStringAsPrecision(2)}\n";
-      if (imc < 18.6)
-        _result += "Abaixo do peso";
-      else if (imc < 25.0)
-        _result += "Peso ideal";
-      else if (imc < 30.0)
-        _result += "Levemente acima do peso";
-      else if (imc < 35.0)
-        _result += "Obesidade de 1º Grau ";
-      else if (imc < 40.0)
-        _result += "Obesidade 2º Grau ";
+      if (imc < 16)
+        _result += "Magreza grave";
+      else if (imc < 16.0 || imc < 17.0)
+        _result += "Magreza moderada";
+      else if (imc < 17.0 || imc < 18.5)
+        _result += "Magreza leve";
+      else if (imc < 18.5 || imc < 25.0)
+        _result += "Saudável";
+      else if (imc < 25.0 || imc < 30.0)
+        _result += "Sobrepeso";
+      else if (imc < 30.5 || imc < 35.0)
+        _result += "Obesidade de Grau I";
+      else if (imc < 35.0 || imc < 40.0)
+        _result += "ObesidadeGrau II (severa) ";
       else
-        _result += "Obesidade 3º Grau ";
+        _result += "Obesidade Grau III (mórbida)";
     });
   }
 
@@ -102,21 +106,21 @@ class _HomeState extends State<Home> {
 
   Padding buildCalculateButton() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 36.0),
+      padding: EdgeInsets.symmetric(vertical: 136.0),
       child: RaisedButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
             calculateImc();
           }
         },
-        child: Text('CALCULAR', style: TextStyle(color: Colors.white)),
+        child: Text('Calcular', style: TextStyle(color: Colors.yellow[900])),
       ),
     );
   }
 
   Padding buildTextResult() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 36.0),
+      padding: EdgeInsets.symmetric(vertical: 136.0),
       child: Text(
         _result,
         textAlign: TextAlign.center,
@@ -136,3 +140,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
