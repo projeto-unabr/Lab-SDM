@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
               error: "Informe o seu peso!",
               controller: _weightController),
           buildTextFormField(
-              label: "Altura (cm)",
+              label: "Altura (CM)",
               error: "Informe a sua altura!",
               controller: _heightController),
           buildTextResult(),
