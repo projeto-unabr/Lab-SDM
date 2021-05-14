@@ -1,65 +1,207 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-        _counter++;
-    });
-  }
-
+void main() => runApp(
+  MaterialApp(
+    initialRoute: '/primeira',
+    routes: {
+    '/primeira': (context) => PrimeiraTela(),
+    '/segunda': (context) => SegundaTela(),
+    '/terceira': (context) => TerceiraTela(),
+    '/quarta' : (context) => QuartaTela(),
+    },
+  ),
+);
+class PrimeiraTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Primeira Tela"),
       ),
       body: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+        child: Column(
+          children: [
+            Container(
+              child: Text(
+                '1',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
+              ),
+              padding: EdgeInsets.all(40),
+              margin: EdgeInsets.all(25),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  child: Icon (Icons.navigate_next),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/segunda');
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
     );
   }
 }
+class SegundaTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+        title: Text("Segunda Tela"),
+    ),
+    body: Center(
+    child: Column(
+    children: [
+    Container(
+    child: Text(
+    '2',
+    style: TextStyle(
+    fontSize: 45,
+    fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    ),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.green,
+      ),
+      padding: EdgeInsets.all(40),
+      margin: EdgeInsets.all(25),
+    ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ElevatedButton(
+            child: Icon(Icons.navigate_before),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          ElevatedButton(
+            child: Icon(Icons.navigate_next),
+            onPressed: () {
+              Navigator.pushNamed(context, '/terceira');
+            },
+          ),
+        ],
+      )
+    ],
+    ),
+    ),
+    );
+  }
+}
+class TerceiraTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Terceira Tela"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              child: Text(
+                '3',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
+              ),
+              padding: EdgeInsets.all(40),
+              margin: EdgeInsets.all(25),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  child: Icon(Icons.navigate_before),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ElevatedButton(
+                  child: Icon(Icons.navigate_next),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/quarta');
+                  },
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+class QuartaTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quarta Tela"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              child: Text(
+                '4',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
+              ),
+              padding: EdgeInsets.all(40),
+              margin: EdgeInsets.all(25),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  child: Icon(Icons.navigate_before),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ElevatedButton(
+                  child: Icon(Icons.navigate_next),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/primeira');
+                  },
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
