@@ -1,65 +1,134 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (context) => PrimeiraTela(),
+          '/segunda': (context) => SegundaTela(),
+          '/terceira': (context) => TerceiraTela(),
+          '/quarta': (context) => QuartaTela(),
+        },
+      ),
+    );
 
-class MyApp extends StatelessWidget {
+class PrimeiraTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    Corpo corpo = Corpo('1');
+    Botao botao = Botao('segunda');
+    return Tela('Primeira Tela', corpo, botao);
+  }
+}
+
+class SegundaTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Corpo corpo = Corpo('2');
+    Botoes botoes = Botoes('terceira');
+    return Tela('Segunda Tela', corpo, botoes);
+  }
+}
+
+class TerceiraTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Corpo corpo = Corpo('3');
+    Botoes botoes = Botoes('quarta');
+    return Tela('Terceira Tela', corpo, botoes);
+  }
+}
+
+class QuartaTela extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Corpo corpo = Corpo('4');
+    Botoes botoes = Botoes('segunda');
+    return Tela('Quarta Tela', corpo, botoes);
+  }
+}
+
+class Corpo extends StatelessWidget {
+  final String texto;
+  Corpo(this.texto);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        '${this.texto}',
+        style: TextStyle(
+          fontSize: 45,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.green,
+      ),
+      padding: EdgeInsets.all(40),
+      margin: EdgeInsets.all(25),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
+class Botao extends StatelessWidget {
+  final String proxima;
+  Botao(this.proxima);
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Icon(Icons.navigate_next),
+      onPressed: () {
+        Navigator.pushNamed(context, '/${this.proxima}');
+      },
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-        _counter++;
-    });
+class Botoes extends StatelessWidget {
+  final String proxima;
+  Botoes(this.proxima);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ElevatedButton(
+          child: Icon(Icons.navigate_before),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        ElevatedButton(
+          child: Icon(Icons.navigate_next),
+          onPressed: () {
+            Navigator.pushNamed(context, '/${this.proxima}');
+          },
+        ),
+      ],
+    );
   }
+}
 
+class Tela extends StatelessWidget {
+  final String titulo;
+  final Widget corpo, navegacao;
+  Tela(this.titulo, this.corpo, this.navegacao);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('${this.titulo}'),
       ),
       body: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+        child: Column(
+          children: [
+            corpo,
+            navegacao,
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
     );
   }
 }
