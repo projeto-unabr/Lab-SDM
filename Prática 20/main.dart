@@ -1,65 +1,72 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(Aplicativo());
 
-class MyApp extends StatelessWidget {
+class Aplicativo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
+class Home extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  HomeState createState() => HomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-        _counter++;
-    });
+class HomeState extends State<Home> {
+  int indice = 0;
+  static const TextStyle estiloParaTexto =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> telas = <Widget>[
+    Image(
+      image: NetworkImage(
+          'https://images.unsplash.com/photo-1547721064-da6cfb341d50'),
+    ),
+    Image(
+      image: NetworkImage(
+          'https://flutter.dev/images/catalog-widget-placeholder.png'),
+    ),
+    Image(
+      image: NetworkImage(
+          'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+    ),
+  ];
+  void selecionar(int indice) {
+    setState(() => this.indice = indice);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Página Inicial'),
       ),
       body: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: telas.elementAt(this.indice),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.photo_camera),
+            label: 'Animais',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.code),
+            label: 'Programação',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.food_bank),
+            label: 'Alimentação',
+          ),
+        ],
+        currentIndex: this.indice,
+        selectedItemColor: Colors.amber[800],
+        onTap: selecionar,
+      ),
     );
   }
 }
