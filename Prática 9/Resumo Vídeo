@@ -1,0 +1,20 @@
+Nesse resumo vamos está falando um pouco sobre uma entrevista que rolou no canal Felipe Deschmps,
+nesse vídeo e entrevistado o programador Guilherme Silveira. No vídeo e mostrado como criar aplicativos
+em Flutter com a linguagem Dart .Apos te sido aberto o Android Studio a programado mostra como abrir um
+emulador e coloca para compilar, após ter compilado o ele mostra o código que o flutter já gera no primeiro
+momento, e mostra como aquele código virou um aplicativo no emulador. Mostrando a linha de código ele explica
+o significado o “main” que seria, um ponto de entrada que permite que você execute o código, o “main” e o 
+início da linguem dart. O flutter em si se inicia mesmo e em “runApp” .O que flutter desenha na sua aplicação 
+são componentes visíveis ou invisíveis que na programação se chamam “Widget” e comum que o “widget” tenha mais 
+de um filho ligado a ele, quem desenha esses “widget “ e o “Buid” que também e um componente, mais esse e que
+construí a verdadeira arvore dos componentes “Widget”. Temos também no flutter vários paramentemos que definem
+cores, tamanhos, tipo, tema e etc. Explicando um pouco o que seria “Myhomepage”, no caso ela seria uma classe
+que estende um “widgte”. A “Myhomepage” recebe dois construtores que recebem dois argumentos opcionais caso 
+estejam dentro de chaves, se estiverem fora das chaves eles são obrigatórios. Apos coloca todos os “Widget” 
+necessários no “Myhomepage” , devemos roda o “Ststate’  notifica que foi mudado o estado, esse “Ststate” também 
+e responsável por fazer o build, toda vez que o estado for alterado e chamado um build, a parti dai  desenha
+algo na tela. E muito comum em dart e flutter colocar virgula basicamente em tudo para que o código fique bem 
+formatado. Cada bloquinho de informação que ela quer que alguma fase da interface mude ela cria um estado ela 
+isola tudo no “widget” indicado. Todo “state” tem uma variável widget do tipo “myhomepage”. No código temos um 
+widget que se chama “body” , dentro dele ficam- se colunas, aonde fica armazenados textos que mostram no aplicativo 
+já rodando. E no final mostra a função   o “child” que e como vai ser desenhado todo o código no  aplicativo.
