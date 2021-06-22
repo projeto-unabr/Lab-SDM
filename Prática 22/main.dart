@@ -1,65 +1,130 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Aplicativo());
 }
 
-class MyApp extends StatelessWidget {
+class Produto {
+  int id;
+  String url, nome, descricao;
+  double preco;
+
+  Produto({
+    required this.id,
+    required this.url,
+    required this.nome,
+    required this.descricao,
+    required this.preco,
+  });
+
+  static List<Produto> getProdutos() {
+    return [
+      Produto(
+        id: 1,
+        url: 'https://picsum.photos/250?image=',
+        nome: 'Notebook',
+        descricao: 'Notebook Dell Inspiron I15 Intel 8GB 1TB 15,6" Preto',
+        preco: 30109.98,
+      ),
+      Produto(
+        id: 2,
+        url:
+            'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        nome: 'Bolo',
+        descricao: 'Bolo em camadas com cobertura de frutas e nozes',
+        preco: 15.19,
+      ),
+      Produto(
+        id: 3,
+        url:
+            'https://images.pexels.com/photos/213798/pexels-photo-213798.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        nome: 'Torre e aerogerador',
+        descricao: 'Torre e aerogerador - de energia eólica',
+        preco: 50125.47,
+      )
+    ];
+  }
+}
+
+class ListaMenu {
+  static List<DropdownMenuItem<Produto>> getListaProdutosMenu(List produtos) {
+    List<DropdownMenuItem<Produto>> listaProdutosMenu = [];
+    for (Produto produto in produtos) {
+      listaProdutosMenu.add(
+        DropdownMenuItem(
+          value: produto,
+          child: Text(produto.nome),
+        ),
+      );
+    }
+    return listaProdutosMenu;
+  }
+}
+
+class Aplicativo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-        _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Exemplo de DropdownMenu'),
+        ),
+        body: Center(
+          child: MenuSuspenso(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), 
     );
   }
 }
+
+class MenuSuspenso extends StatefulWidget {
+  MenuSuspensoState createState() {
+    return MenuSuspensoState();
+  }
+}
+
+class MenuSuspenso extends StatefulWidget {
+  MenuSuspensoState createState() {
+    return MenuSuspensoState();
+  }
+}
+class MenuSuspensoState extends State<MenuSuspenso> {
+  Produto? produtoSelecionado;
+   List<DropdownMenuItem<Produto>>? listaProdutosMenu;
+    /*O método initState() gera o estado inicial do widget quando um objeto da classe é instanciado.*/
+     @override 
+     void initState() {
+        listaProdutosMenu = ListaMenu.getListaProdutosMenu(
+          Produto.getProdutos(), 
+          ); 
+          produtoSelecionado = listaProdutosMenu![0].value; 
+          super.initState();
+           } 
+           aoSelecionarProduto(Produto? produtoSelecionado) {
+              setState( () {
+                 this.produtoSelecionado = produtoSelecionado;
+                  }, 
+                  );
+                 }
+@override 
+ Widget build(BuildContext context) { 
+   return Column(
+      children: [ Text('Produto:'),
+       DropdownButton(
+          value: this.produtoSelecionado, 
+          items: this.listaProdutosMenu,
+         onChanged: this.aoSelecionarProduto, ),
+          Text('Produto selecionado: ${this.produtoSelecionado!.nome}'), 
+          Padding(
+             padding: EdgeInsets.all(8), 
+             child: Image( 
+              image: NetworkImage(this.produtoSelecionado!.url),
+               height: 250, 
+               width: 250, 
+             ),
+          ),
+        ], 
+      ); 
+    } 
+  }                
