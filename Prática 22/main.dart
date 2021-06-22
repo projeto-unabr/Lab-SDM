@@ -10,11 +10,11 @@ class Produto {
   double preco;
 
   Produto({
-    required this.id,
-    required this.url,
-    required this.nome,
-    required this.descricao,
-    required this.preco,
+     required this.id,
+     required this.url,
+     required this.nome,
+     required this.descricao,
+     required this.preco,
   });
 
   static List<Produto> getProdutos() {
@@ -78,11 +78,6 @@ class Aplicativo extends StatelessWidget {
   }
 }
 
-class MenuSuspenso extends StatefulWidget {
-  MenuSuspensoState createState() {
-    return MenuSuspensoState();
-  }
-}
 
 class MenuSuspenso extends StatefulWidget {
   MenuSuspensoState createState() {
@@ -90,8 +85,8 @@ class MenuSuspenso extends StatefulWidget {
   }
 }
 class MenuSuspensoState extends State<MenuSuspenso> {
-  Produto? produtoSelecionado;
-   List<DropdownMenuItem<Produto>>? listaProdutosMenu;
+  Produto produtoSelecionado;
+   List<DropdownMenuItem<Produto>> listaProdutosMenu;
     /*O método initState() gera o estado inicial do widget quando um objeto da classe é instanciado.*/
      @override 
      void initState() {
