@@ -4,7 +4,6 @@
 <table>
     <tr>
       <td align="center"><a href="https://www.linkedin.com/in/maria-eduarda-benício-0112961ab"><img style="border-radius: 50%;" src="https://i.ibb.co/KrsqqYG/Maria-Eduarda-1.png" width="150px;" alt=""/><br /><sub><b>Maria Eduarda</b></sub></a><br><sub>RA: 320130330</sub><br /></td>
-      <td align="center"><a href="https://www.linkedin.com/in/kevin-ramos-71ba56209"><img style="border-radius: 50%;" src="https://i.ibb.co/MRJG2cW/kevin.png" width="150px;" alt=""/><br /><sub><b>Kevin Ramos</b></sub></a><br><sub>RA: 320139815</sub><br /></td>
       <td align="center"><a href="https://"><img style="border-radius: 50%;" src="https://i.ibb.co/KjQfRdS/Thais-2.png" width="150px;" alt=""/><br /><sub><b>Thais Cristina</b></sub></a><br><sub>RA: 320112121</sub><br /></td>
     </tr>
     <tr>
